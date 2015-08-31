@@ -118,4 +118,44 @@ $(function() {
         });
 
      });
+
+    // Returns a random integer between min (included) and max (excluded)
+    // Using Math.round() will give you a non-uniform distribution!
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+    function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
+
+    /* TODO: Write a new test suite named "Selected Entry" */
+    describe('Selected Feed Entry', function() {
+    	 /* hasAttribute https://developer.mozilla.org/en-US/docs/Web/API/Element/hasAttribute
+    	    getAttribute https://developer.mozilla.org/en-US/docs/Web/API/Element/getAttribute
+         */
+
+        var feedLength = allFeeds.length,
+            feed = feedLength === 1 ? 0 : getRandomInt(0, feedLength);
+
+            console.log(feed);
+
+        beforeEach(function(done) {
+            loadFeed(feed, done);
+        });
+
+        afterEach(function(done) {
+            loadFeed(0, done);
+        });
+
+        it('opens new tab', function() {
+        	var feedEntries = document.getElementsByClassName('entry-link');
+        	var length = feedEntries.length;
+
+        	for (var i = 0; i < length; i++) {
+        		var elem = feedEntries[i];
+        		console.log(elem);
+        		expect(elem.hasAttribute('target')).toBe(true);
+        		expect(elem.getAttribute('target')).toBe('_blank');
+            }
+        });
+
+     });
 }());
