@@ -182,7 +182,7 @@ $(function() {
          * @expects that entry links have the attribute target
          * @expects that the attribute target equals '_blank'
          */
-        xit('opens new tab', function() {
+        it('opens new tab', function() {
         	var feedEntries = document.getElementsByClassName('entry-link'),
         	    length = feedEntries.length;
 
@@ -198,7 +198,7 @@ $(function() {
          * Ensures that selected entry links change their color.
          * @expects that a visited .entry element contains .visited class
          */
-        xit('changes color', function() {
+        it('changes color', function() {
         	var feedEntries = $('.entry'),
         	    length = feedEntries.length;
 
@@ -207,7 +207,7 @@ $(function() {
                 link.click();
                 var visited = document.getElementsByClassName('entry')[i].classList.contains('visited');
                 expect(visited).toBeTruthy();
-                //document.getElementsByClassName('entry')[i].classList.remove('visited'); // reset
+                document.getElementsByClassName('entry')[i].classList.remove('visited'); // reset
             }
         });
      });
