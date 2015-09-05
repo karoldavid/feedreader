@@ -134,7 +134,7 @@ $(function() {
      * MDN privacy https://developer.mozilla.org/en-US/docs/Web/CSS/Privacy_and_the_%3Avisited_selector
      */
     document.addEventListener('click', function(e) {
-        //  The .click() function in the spec triggers another target
+        /* The .click() function in the spec triggers another target */
         if (e.srcElement.classList.contains('entry')) {
             e.srcElement.classList.add('visited');
         } else if (e.srcElement.parentElement.classList.contains('entry')) {

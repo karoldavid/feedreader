@@ -166,7 +166,7 @@ $(function() {
     	 * Loads feed 1 asynchronously
     	 */
         beforeEach(function(done) {
-        	$('.entry-link').empty();
+        	$('.feed').empty();
             loadFeed(1, done);
         });
     	/**
@@ -182,7 +182,7 @@ $(function() {
          * @expects that entry links have the attribute target
          * @expects that the attribute target equals '_blank'
          */
-        it('opens new tab', function() {
+        it('opens new tab', function(done) {
         	var feedEntries = document.getElementsByClassName('entry-link'),
         	    length = feedEntries.length;
 
@@ -192,13 +192,14 @@ $(function() {
         		expect(elem.hasAttribute('target')).toBeTruthy();
         		expect(elem.getAttribute('target')).toEqual('_blank');
             }
+            done();
         });
         /**
          * @test "changes color"
          * Ensures that selected entry links change their color.
          * @expects that a visited .entry element contains .visited class
          */
-        it('changes color', function() {
+        it('changes color', function(done) {
         	var feedEntries = $('.entry'),
         	    length = feedEntries.length;
 
@@ -209,6 +210,7 @@ $(function() {
                 expect(visited).toBeTruthy();
                 document.getElementsByClassName('entry')[i].classList.remove('visited'); // reset
             }
+            done();
         });
      });
 }());
