@@ -28,13 +28,13 @@
 $(function() {
 
     /**
-     * @suite RSS Feeds
+     * @suite "RSS Feeds"
      * This suite is all about the RSS feeds definitions,
      * the allFeeds variable in our application.
      */
     describe('RSS Feeds', function() {
         /**
-         * @test
+         * @test "are defined"
          * Tests that the allFeeds variable has been defined and that it is not
          * empty.
          */
@@ -43,10 +43,9 @@ $(function() {
             expect(allFeeds.length).not.toBe(0);
         });
         /**
-         * @test
-         * TODO: Write a test that loops through each feed
-         * in the allFeeds object and ensures it has a URL defined
-         * and that the URL is not empty.
+         * @test "have url"
+         * Loops through each feed in the allFeeds object and ensures it
+         * has a URL defined and that the URL is not empty.
          */
         it('have url', function() {
             allFeeds.forEach(function(feed){
@@ -55,10 +54,9 @@ $(function() {
             });
         });
         /**
-         * @test
-         * TODO: Write a test that loops through each feed
-         *  in the allFeeds object and ensures it has a name defined
-         *  and that the name is not empty.
+         * @test "have name"
+         * Loops through each feed in the allFeeds object and ensures
+         * it has a name defined and that the name is not empty.
          */
         it('have name', function() {
             allFeeds.forEach(function(feed){
@@ -69,25 +67,22 @@ $(function() {
     });
 
     /**
-     * @suite The menu
+     * @suite "The Menu"
      */
     describe('The Menu', function() {
         /**
-         * @test
-         * TODO: Write a test that ensures the menu element is
-         * hidden by default. You'll have to analyze the HTML and
-         * the CSS to determine how we're performing the
-         * hiding/showing of the menu element.
+         * @test "is hidden"
+         * Ensures the menu element is hidden by default.
+         * @expects the menue is hidden
          */
         it('is hidden', function() {
             expect($('body.menu-hidden').length).toBe(1);
         });
         /**
-         * @test
-         * TODO: Write a test that ensures the menu changes
-         * visibility when the menu icon is clicked. This test
-         * should have two expectations: does the menu display when
-         * clicked and does it hide when clicked again.
+         * @test "toggles on click"
+         * Ensures the menu changes visibility when the menu icon is clicked.
+         * @expects the menu displayes when clicked
+         * @expects the menue hides when clicked again.
          */
         it('toggles on click', function() {
             $('.menu-icon-link').click();
@@ -98,24 +93,23 @@ $(function() {
     });
 
    /**
-    * @suite Initial Entries
+    * @suite "Initial Entries"
     */
     describe('Initial Entries', function() {
     	/**
-    	 *
-    	 *
+    	 * @function
+    	 * Empties the feed class
+    	 * Loads feed 0 asynchronously
     	 */
         beforeEach(function(done){
             $('.feed').empty();
             loadFeed(0, done);
         });
         /**
-         * @test
-         * TODO: Write a test that ensures when the loadFeed
-         * function is called and completes its work, there is at least
-         * a single .entry element within the .feed container.
-         * Remember, loadFeed() is asynchronous so this test wil require
-         * the use of Jasmine's beforeEach and asynchronous done() function.
+         * @test "have at least 1 entry"
+         * Ensures when the loadFeed function is called and
+         * completes its work, there is at least a single
+         * .entry element within the .feed container.
          */
          it('have at least 1 entry', function(done) {
             expect($('.feed').find('.entry')).toBeDefined();
@@ -125,14 +119,17 @@ $(function() {
 
     /**
      * @suite New Feed Selection
-     *
      */
     describe('New Feed Selection', function(){
-    	var entry_before, //
-        	entry_after; //
+    	var entry_before, // @typpe string
+        	entry_after;  // @type string
         /**
-    	 *
-    	 *
+    	 * @function
+         * Empties the feed class
+    	 * Loads feed 0 asynchronously
+    	 * Gets text content from firsts entry of feed 0
+    	 * Loads feed 1 asynchronously
+    	 * Gets text content from firsts entry of feed 1
     	 */
         beforeEach(function(done){
 
@@ -148,12 +145,10 @@ $(function() {
             });
         });
         /**
-         * @test changes the content
-         * TODO: Write a test that ensures when the loadFeed
-         * function is called and completes its work, there is at least
-         * a single .entry element within the .feed container.
-         * Remember, loadFeed() is asynchronous so this test wil require
-         * the use of Jasmine's beforeEach and asynchronous done() function.
+         * @test "changes the content"
+         * Ensures when the loadFeed function is called and completes
+         * its work, there is at least a single .entry element within
+         * the .feed container.
          */
         it('changes the content', function(done){
             expect(entry_before).not.toEqual(entry_after);
@@ -162,27 +157,31 @@ $(function() {
     });
 
     /**
-     * @suite Selected Feed Entry
+     * @suite "Selected Feed Entry"
      */
     describe('Selected Feed Entry', function() {
-       /**
-        *
-        *
-        */
+    	/**
+    	 * @function
+    	 * Empties the entry links
+    	 * Loads feed 1 asynchronously
+    	 */
         beforeEach(function(done) {
             loadFeed(1, done);
         });
-
-        afterEach(function(done) {
+    	/**
+    	 * @function
+    	 * Loads feed 0 asynchronously
+    	 */
+     /*   afterEach(function(done) {
             loadFeed(0, done);
-        });
+        });  */
         /**
-         * @test opens new tab
-         *
+         * @test "opens new tab"
+         * Ensures that entry links are opened in a new browser tab.
          */
         it('opens new tab', function() {
-        	var feedEntries = document.getElementsByClassName('entry-link');
-        	var length = feedEntries.length;
+        	var feedEntries = document.getElementsByClassName('entry-link'),
+        	    length = feedEntries.length;
 
         	for (var i = 0; i < length; i++) {
         		var elem = feedEntries[i];
@@ -191,23 +190,21 @@ $(function() {
         		expect(elem.getAttribute('target')).toEqual('_blank');
             }
         });
-
+        /**
+         * @test "changes color"
+         * Ensures that selected entry links change their color.
+         */
         it('changes color', function() {
-        	var feedEntries = document.getElementsByClassName('entry-link');
-        	var length = feedEntries.length;
+        	var feedEntries = $('.entry'),
+        	    length = feedEntries.length;
 
-        	for (var i = 0; i < length; i++) {
-        		var elem = feedEntries[i];
-
-        		expect(elem.hasAttribute('target')).toBeTruthy();
-        		expect(elem.getAttribute('target')).toEqual('_blank');
+            for (var i = 0; i < length; i++) {
+                var link = feedEntries[i];
+                link.click();
+                var visited = document.getElementsByClassName('entry')[i].classList.contains('visited');
+                expect(visited).toBeTruthy();
+               //document.getElementsByClassName('entry')[i].classList.remove('visited');
             }
         });
      });
-
-    // TODO: Test Count number of entries in feed
-    // TODO: Test Change entry color if selected
-    // TODO: Test unique feed names and sources only
-    // TODO: Test ADD FEED BUTTON
-    // TODO: Test if Google Feed Reader API is used
 }());
