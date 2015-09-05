@@ -89,4 +89,9 @@ h2 {
     border-bottom: 1px solid #ddd;
     padding: 1em;
     margin: 0.5em 0;
+    color: #000; /*Initial color of feed entries*/
+}
+
+.visited {
+    color: #ff0000; /*Visited links get the visited class appended in app.js*/
 }

@@ -129,11 +129,16 @@ $(function() {
         $('body').toggleClass('menu-hidden');
     });
 
+    /**
+     * Workaround for privacy issues with visited link style
+     * MDN privacy https://developer.mozilla.org/en-US/docs/Web/CSS/Privacy_and_the_%3Avisited_selector
+     */
     document.addEventListener('click', function(e) {
-        //e = e || window.event;
-        console.log(e.srcElement);
-        if (e.srcElement.classList.contains('entry') && !e.srcElement.classList.contains('visited')) {
+        //  The .click() function in the spec triggers another target
+        if (e.srcElement.classList.contains('entry')) {
             e.srcElement.classList.add('visited');
+        } else if (e.srcElement.parentElement.classList.contains('entry')) {
+            e.srcElement.parentElement.classList.add('visited');
         }
     }, false);
 
