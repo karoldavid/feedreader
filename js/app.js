@@ -128,4 +128,13 @@ $(function() {
     menuIcon.on('click', function() {
         $('body').toggleClass('menu-hidden');
     });
+
+    document.addEventListener('click', function(e) {
+        //e = e || window.event;
+        console.log(e.srcElement);
+        if (e.srcElement.classList.contains('entry') && !e.srcElement.classList.contains('visited')) {
+            e.srcElement.classList.add('visited');
+        }
+    }, false);
+
 }());
