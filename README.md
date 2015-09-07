@@ -12,7 +12,7 @@ The test suites are written within Jasmine, a JavaScript Testing Framework. They
 
 The spec file 'jasmine/spec/feedreader.js' contains five test suites:
 
-Three obligatory test suites
+Four obligatory test suites
 * RSS Feeds
  1) Is the allFeeds variable defined and is it not empty?
  2) Do all feeds have an URL and is the URL not empty?
