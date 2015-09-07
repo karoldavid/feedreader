@@ -37,6 +37,8 @@ $(function() {
          * @test "are defined"
          * Tests that the allFeeds variable has been defined and that it is not
          * empty.
+         * @expects allFeeds is defined
+         * @expects allFeeds lenght is not 0
          */
         it('are defined', function() {
             expect(allFeeds).toBeDefined();
@@ -46,6 +48,8 @@ $(function() {
          * @test "have url"
          * Loops through each feed in the allFeeds object and ensures it
          * has a URL defined and that the URL is not empty.
+         * @expects url is defined
+         * @expects url length is not 0
          */
         it('have url', function() {
             allFeeds.forEach(function(feed){
@@ -57,6 +61,8 @@ $(function() {
          * @test "have name"
          * Loops through each feed in the allFeeds object and ensures
          * it has a name defined and that the name is not empty.
+         * @expects feed name is definded
+         * @expects fedd name length is not 0
          */
         it('have name', function() {
             allFeeds.forEach(function(feed){
@@ -73,22 +79,22 @@ $(function() {
         /**
          * @test "is hidden"
          * Ensures the menu element is hidden by default.
-         * @expects the menue is hidden
+         * @expects the menu is hidden
          */
         it('is hidden', function() {
-            expect($('body.menu-hidden').length).toBe(1);
+            expect($('body .menu-hidden').length).toBe(1);
         });
         /**
          * @test "toggles on click"
          * Ensures the menu changes visibility when the menu icon is clicked.
          * @expects the menu displayes when clicked
-         * @expects the menue hides when clicked again.
+         * @expects the menu hides when clicked again.
          */
         it('toggles on click', function() {
             $('.menu-icon-link').click();
-            expect($('body.menu-hidden').length).toBe(0);
+            expect($('body').hasClass('menu-hidden')).toBeFalsy();
             $('.menu-icon-link').click();
-            expect($('body.menu-hidden').length).toBe(1);
+            expect($('body').hasClass('menu-hidden')).toBeTruthy();
         });
     });
 
@@ -110,9 +116,10 @@ $(function() {
          * Ensures when the loadFeed function is called and
          * completes its work, there is at least a single
          * .entry element within the .feed container.
+         * @expects feed entry length is not 0
          */
          it('have at least 1 entry', function(done) {
-            expect($('.feed').find('.entry')).toBeDefined();
+            expect($('.feed .entry').length).not.toBe(0);
             done();
         });
     });
@@ -137,18 +144,25 @@ $(function() {
 
             loadFeed(0, function() {
                 entry_before = $('.feed').find('h2')[0].textContent;
-            });
-
-            loadFeed(1, function() {
-                entry_after = $('.feed').find('h2')[0].textContent;
+                /**
+                 *
+                 * The output of the test is dependent on the timing of
+                 * other uncontrollable events
+                 * For more see: Race Condition https://en.wikipedia.org/wiki/Race_condition
+                 */
+                loadFeed(1, function() {
+                    entry_after = $('.feed').find('h2')[0].textContent;
+                });
                 done();
             });
+
         });
         /**
          * @test "changes the content"
          * Ensures when the loadFeed function is called and completes
          * its work, there is at least a single .entry element within
          * the .feed container.
+         * @expects entry before and after are not equal
          */
         it('changes the content', function(done){
             expect(entry_before).not.toEqual(entry_after);
@@ -160,7 +174,7 @@ $(function() {
      * @suite "Selected Feed Entry"
      */
     describe('Selected Feed Entry', function() {
-    	/**
+        /**
     	 * @function
     	 * Empties the entry links
     	 * Loads feed 1 asynchronously
@@ -169,7 +183,7 @@ $(function() {
         	$('.feed').empty();
             loadFeed(1, done);
         });
-    	/**
+        /**
     	 * @function
     	 * Loads feed 0 asynchronously
     	 */
