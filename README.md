@@ -8,7 +8,7 @@ http://karoldavid.github.io/feedreader
 "test-driven development" is an important part of the development process. It ensures that features, to be developed in the future, do not break existing ones. In this project, a number of tests are run against a web-based application that reads RSS feeds.
 The test suites are written within Jasmina, a JavaScript Testing Framework. They test the underlying business logic of the application, the event handling and the DOM manipulation.
 
-#### The spec file 'jasmine/spec/feeadreader.js' contains 5 test suites
+#### The spec file 'jasmine/spec/feedreader.js' contains 5 test suites
 
 Three obligatory test suites
 * RSS Feeds
