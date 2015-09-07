@@ -1,28 +1,33 @@
 ## Feedreader Testsuite with Jasmine
 
-#### Here is a link to the live version:
+#### Here is a link to the live version
 
 http://karoldavid.github.io/feedreader
 
-### Project Overview
-
-https://github.com/udacity/frontend-nanodegree-feedreader
+#### The project is part of the Udacity Front-End Web Developer Nanodegree
 
 https://www.udacity.com/course/viewer#!/c-nd001/l-3442558598/m-3434738723
 
+#### The code was forked from:
 
-### Why this Project?
+https://github.com/udacity/frontend-nanodegree-feedreader
+
+
+### Project Overview
+
+
+### HowTo
 
 
 ### Resources
 
-Jasmine Behavior-Driven JavaScript Documentation
+1. Jasmine Behavior-Driven JavaScript Documentation
 http://jasmine.github.io/
 
-Using Jasmine 2.0's New done() Function to Test Asynchronous Processes
+2. Using Jasmine 2.0's New done() Function to Test Asynchronous Processes
 http://www.htmlgoodies.com/beyond/javascript/stips/using-jasmine-2.0s-new-done-function-to-test-asynchronous-processes.html
 
-Jasmine JS testing Cheat Sheet
+3. Jasmine JS testing Cheat Sheet
 http://www.cheatography.com/citguy/cheat-sheets/jasmine-js-testing/
 
 #### You can email me: k.zysk@zoho.com
