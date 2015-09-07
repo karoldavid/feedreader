@@ -30,7 +30,7 @@ $(function() {
     /**
      * @suite "RSS Feeds"
      * This suite is all about the RSS feeds definitions,
-     * the allFeeds variable in our application.
+     * the allFeeds variable in the application.
      */
     describe('RSS Feeds', function() {
         /**
