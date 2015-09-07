@@ -82,7 +82,7 @@ $(function() {
          * @expects the menu is hidden
          */
         it('is hidden', function() {
-            expect($('body .menu-hidden').length).toBe(1);
+            expect($('body').hasClass('menu-hidden')).toBeTruthy();
         });
         /**
          * @test "toggles on click"
