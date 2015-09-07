@@ -8,7 +8,10 @@ http://karoldavid.github.io/feedreader
 "test-driven development" is an important part of the development process. It ensures that features, to be developed in the future, do not break existing ones. In this project, a number of tests are run against a web-based application that reads RSS feeds.
 The test suites are written within Jasmine, a JavaScript Testing Framework. They test the underlying business logic of the application, the event handling and the DOM manipulation.
 
-The spec file 'jasmine/spec/feedreader.js' contains 5 test suites:
+
+## The test suites
+
+The spec file 'jasmine/spec/feedreader.js' contains five test suites:
 
 Three obligatory test suites
 * RSS Feeds
@@ -19,7 +22,7 @@ Two additional test suites
 * New Feed Selection
 * Selected Feed Entry
 
-## HOWTO
+## HOW TO
 Clone or download the source code and click on index.html to run the Feed Reader Tests:
 
 * git clone https://github.com/karoldavid/neighborhood-map.git
