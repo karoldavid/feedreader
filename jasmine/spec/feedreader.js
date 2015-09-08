@@ -145,27 +145,16 @@ $(function() {
             loadFeed(0, function() {
                 entry_before = $('.feed').find('h2')[0].textContent;
                 /**
-                 * The test output is dependent on the timing of
+                 * The test output of the test is dependent on the timing of
                  * other uncontrollable events
                  * For more see: Race Condition https://en.wikipedia.org/wiki/Race_condition
-                 */                
+                 */
                 loadFeed(1, function() {
                     entry_after = $('.feed').find('h2')[0].textContent;
                     done();
                 });
             });
         });
-        /**
-         * @test "changes the content"
-         * Ensures when the loadFeed function is called and completes
-         * its work, there is at least a single .entry element within
-         * the .feed container.
-         */
-        it('changes the content', function(done){
-            expect(entry_before).not.toEqual(entry_after);
-            done();
-        });
-    });
         /**
          * @test "changes the content"
          * Ensures when the loadFeed function is called and completes
