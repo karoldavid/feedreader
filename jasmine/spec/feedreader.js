@@ -13,13 +13,11 @@
  * Here is a link to the Udacity Project 6 Page:
  * {@link https://www.udacity.com/course/viewer#!/c-nd001/l-3442558598/m-3434738723}
  */
-
 /**
  * @description
  * This is the spec file that Jasmine will read and contains all of the
  * tests that will be run against the Feed Reader Application.
  */
-
 /**
  * @function
  * All of the tests are placed within the $() function, since some of these tests
@@ -52,7 +50,7 @@ $(function() {
          * @expects url length is not 0
          */
         it('have url', function() {
-            allFeeds.forEach(function(feed){
+            allFeeds.forEach(function(feed) {
                 expect(feed.url).toBeDefined();
                 expect(feed.url.length).not.toBe(0);
             });
@@ -65,7 +63,7 @@ $(function() {
          * @expects fedd name length is not 0
          */
         it('have name', function() {
-            allFeeds.forEach(function(feed){
+            allFeeds.forEach(function(feed) {
                 expect(feed.name).toBeDefined();
                 expect(feed.name.length).not.toBe(0);
             });
@@ -98,16 +96,16 @@ $(function() {
         });
     });
 
-   /**
-    * @suite "Initial Entries"
-    */
+    /**
+     * @suite "Initial Entries"
+     */
     describe('Initial Entries', function() {
-    	/**
-    	 * @function
-    	 * Empties the feed class
-    	 * Loads feed 0 asynchronously
-    	 */
-        beforeEach(function(done){
+        /**
+         * @function
+         * Empties the feed class
+         * Loads feed 0 asynchronously
+         */
+        beforeEach(function(done) {
             $('.feed').empty();
             loadFeed(0, done);
         });
@@ -118,7 +116,7 @@ $(function() {
          * .entry element within the .feed container.
          * @expects feed entry length is not 0
          */
-         it('have at least 1 entry', function(done) {
+        it('have at least 1 entry', function(done) {
             expect($('.feed .entry').length).not.toBe(0);
             done();
         });
@@ -127,18 +125,18 @@ $(function() {
     /**
      * @suite New Feed Selection
      */
-    describe('New Feed Selection', function(){
-    	var entry_before, // @typpe string
-        	entry_after;  // @type string
+    describe('New Feed Selection', function() {
+        var entry_before, // @typpe string
+            entry_after; // @type string
         /**
-    	 * @function
+         * @function
          * Empties the feed class
-    	 * Loads feed 0 asynchronously
-    	 * Gets text content from firsts entry of feed 0
-    	 * Loads feed 1 asynchronously
-    	 * Gets text content from firsts entry of feed 1
-    	 */
-        beforeEach(function(done){
+         * Loads feed 0 asynchronously
+         * Gets text content from firsts entry of feed 0
+         * Loads feed 1 asynchronously
+         * Gets text content from firsts entry of feed 1
+         */
+        beforeEach(function(done) {
 
             $('.feed').empty();
 
@@ -162,7 +160,7 @@ $(function() {
          * the .feed container.
          * @expects entry before and after are not equal
          */
-        it('changes the content', function(done){
+        it('changes the content', function(done) {
             expect(entry_before).not.toEqual(entry_after);
             done();
         });
@@ -173,18 +171,18 @@ $(function() {
      */
     describe('Selected Feed Entry', function() {
         /**
-    	 * @function
-    	 * Empties the entry links
-    	 * Loads feed 1 asynchronously
-    	 */
+         * @function
+         * Empties the entry links
+         * Loads feed 1 asynchronously
+         */
         beforeEach(function(done) {
-        	$('.feed').empty();
+            $('.feed').empty();
             loadFeed(1, done);
         });
         /**
-    	 * @function
-    	 * Loads feed 0 asynchronously
-    	 */
+         * @function
+         * Loads feed 0 asynchronously
+         */
         afterEach(function(done) {
             loadFeed(0, done);
         });
@@ -195,14 +193,14 @@ $(function() {
          * @expects that the attribute target equals '_blank'
          */
         it('opens new tab', function(done) {
-        	var feedEntries = document.getElementsByClassName('entry-link'),
-        	    length = feedEntries.length;
+            var feedEntries = document.getElementsByClassName('entry-link'),
+                length = feedEntries.length;
 
-        	for (var i = 0; i < length; i++) {
-        		var elem = feedEntries[i];
+            for (var i = 0; i < length; i++) {
+                var elem = feedEntries[i];
 
-        		expect(elem.hasAttribute('target')).toBeTruthy();
-        		expect(elem.getAttribute('target')).toEqual('_blank');
+                expect(elem.hasAttribute('target')).toBeTruthy();
+                expect(elem.getAttribute('target')).toEqual('_blank');
             }
             done();
         });
@@ -212,8 +210,8 @@ $(function() {
          * @expects that a visited .entry element contains .visited class
          */
         it('changes color', function(done) {
-        	var feedEntries = $('.entry'),
-        	    length = feedEntries.length;
+            var feedEntries = $('.entry'),
+                length = feedEntries.length;
 
             for (var i = 0; i < length; i++) {
                 var link = feedEntries[i];
@@ -224,5 +222,5 @@ $(function() {
             }
             done();
         });
-     });
+    });
 }());
